@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文章数据后台</title>
+    <!-- Bootstrap Styles-->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- 字体图表-->
+    <link href="../assets/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href="../assets/css/css1.css" rel='styleshnpmeet' type='text/css' />
+    <link href="../assets/css/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="../assets/css/dataTables/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/admin"><i class="fa fa-user"></i> <strong> 小破站后台 </strong></a>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <!-- /.消息 -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Doe</strong>
+                                <span class="pull-right text-muted">
+                                        <em>Today</em>
+                                    </span>
+                            </div>
+                            <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem Ipsum has been the industry's standard dummy text ever since the...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>Read All Messages</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-messages -->
+            </li>
+            <!-- /.列表 -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-tasks">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 1</strong>
+                                    <span class="pull-right text-muted">60% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <span class="sr-only">60% Complete (success)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 2</strong>
+                                    <span class="pull-right text-muted">28% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" style="width: 28%">
+                                        <span class="sr-only">28% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 3</strong>
+                                    <span class="pull-right text-muted">60% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <span class="sr-only">60% Complete (warning)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 4</strong>
+                                    <span class="pull-right text-muted">85% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+                                        <span class="sr-only">85% Complete (danger)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>See All Tasks</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-comment fa-fw"></i> New Comment
+                                <span class="pull-right text-muted small">4 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                <span class="pull-right text-muted small">12 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                <span class="pull-right text-muted small">4 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-tasks fa-fw"></i> New Task
+                                <span class="pull-right text-muted small">4 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                <span class="pull-right text-muted small">4 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>See All Alerts</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-alerts -->
+            </li>
+            <!-- /.登录 -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> <%= name %></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <li>
+                    <a href="/admin"><i class="fa fa-home"></i> 首页</a>
+                </li>
+
+                <li>
+                    <a  href="/table"><i class="fa fa-cogs"></i> 常用工具</a>
+                </li>
+                <li>
+                    <a  href="/essay"><i class="fa fa-file"></i>文章数据 </a>
+                </li>
+                <li>
+                    <a  class="active-menu"  href="/users"><i class="fa fa-user"></i>用户管理 </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        用户管理 <small>User Management</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="/admin">首页</a></li>
+                        <li><a href="/users">用户管理</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading xg">
+                            修改
+                        </div>
+                        <div id="xiugai" style="display: none" class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form" method="post" action="/revise_users" name="addform" enctype="multipart/form-data" onsubmit=" return check(this)">
+                                        <div class="form-group col-lg-6">
+                                            <label>用户名：</label>
+                                            <input class="form-control" placeholder="" name="yonghuming">
+                                            <input style="display: none" class="form-control" placeholder="" value="" name="aid">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>密码：</label>
+                                            <input class="form-control" placeholder="" name="mima">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>昵称：</label>
+                                            <input class="form-control" placeholder="" name="nichen">
+                                        </div>
+
+                                        <div class="form-group col-lg-6">
+                                            <button type="submit" class="btn btn-default">提交</button>
+                                            <button type="reset" class="btn btn-default">重置</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            用户
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table  class=" row-border stripe hover" id="example">
+                                    <thead>
+                                    <tr>
+                                        <th>全选<input style="cursor: pointer" id="selectAll" name="selectAllBtn" type="checkbox"></th>
+                                        <th style="display: none">id</th>
+                                        <th>用户名</th>
+                                        <th>密码</th>
+                                        <th>昵称</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="alternatecolor">
+                                    <% users.forEach(function(value){%>
+                                    <tr>
+                                        <td class="center"><input style="cursor: pointer" type="checkbox" name=checkboxBtn value="<%=value.aid%>"></td>
+                                        <td style="display: none" class="center"><%=value.aid%></td>
+                                        <td class="center"><%=value.yonghuming%></td>
+                                        <td class="center"><%=value.mima%></td>
+                                        <td class="center"><%=value.nichen%></td>
+                                        <td>
+                                            <a href="/delusers?aid=<%=value.aid%>">删除</a>
+                                            <a class="bianji" value="编辑" >编辑</a>
+                                        </td>
+                                    </tr>
+                                    <%})%>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer><p>Copyright © 2018 XiaoLiang. All rights reserved.</p></footer></div>
+
+    </div>
+</div>
+<script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.metisMenu.js"></script>
+<script type="text/javascript" src="../assets/css/dataTables/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+    $(".xg").click(function(){
+        $("#xiugai").slideToggle(800)
+    })
+    $("#alternatecolor").on('click','.bianji',function(){
+        //获得当前行
+        $("#tianjia").slideUp(800);
+        $("#xiugai").slideDown(800);
+        var currentRow=$(this).closest("tr");
+        var aid=currentRow.find("td:eq(1)").text();
+        var yonghuming=currentRow.find("td:eq(2)").text();
+        var mima=currentRow.find("td:eq(3)").text();
+        var nichen=currentRow.find("td:eq(4)").text();
+
+        $("input[name='aid']").attr("value",aid)
+        $("input[name='yonghuming']").attr("value",yonghuming)
+        $("input[name='mima']").attr("value",mima)
+        $("input[name='nichen']").attr("value",nichen)
+
+    });
+    //表格插件
+    $(document).ready(function () {
+        $('#example').dataTable({
+            "pagingType":   "full_numbers",
+            "ordering": false,
+            autoWidth: false,
+            columnDefs: [
+                {
+                    targets:-1,
+                    className:'dt-body-center',
+                }
+            ],
+            columns: [
+
+                { "width": "10%" },
+                { "width": "0%" },
+                { "width": "30%" },
+                { "width": "30%" },
+                { "width": "20%" },
+                { "width": "10%" }
+            ],
+            language: {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                },
+            },
+        });
+    });
+    $("#dataTables-example").css("width","99%");
+    //复选框
+    function setItemCheckBox(flag) {
+        $(":checkbox[name=checkboxBtn]").prop("checked",flag);
+    }
+    $(function () {
+        //点击全选
+        $("#selectAll").click(function(){
+            //1.获取全选的状态
+            var flag = this.checked;//获取全选的状态
+            if(flag){
+                $(this).prop("checked", true);
+            }else{
+                $(this).prop("checked", false);
+            }
+            setItemCheckBox(flag);
+        });
+        //给所有复选框添加事件
+        $(":checkbox[name=checkboxBtn]").click(function(){
+            var flagV = this.checked;
+            if(flagV){
+                $(this).prop("checked", true);
+            }else{
+                $(this).prop("checked", false);
+            }
+            //获取所有复选框的个数
+            var len = $(":checkbox[name=checkboxBtn]").length;
+            //获取所有被选中的复选框的个数
+            var checked_len = $(":checkbox[name=checkboxBtn]:checked").length;
+            if(len == checked_len){
+                //alert("全选中了");
+                $("#selectAll").prop("checked",true);
+            } else if(checked_len == 0) {
+                $("#selectAll").prop("checked",false);
+            } else {
+                $("#selectAll").prop("checked",false);
+            }
+        });
+    });
+
+
+
+</script>
+<script type="text/javascript" src="../assets/js/custom-scripts.js"></script>
+
+</body>
+</html>

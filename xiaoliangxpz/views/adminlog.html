@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+
+    <title>后台管理登录</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <link rel="stylesheet" href="../assets/css/style.css" type="text/css" media="all">
+
+    <link rel="stylesheet" href="../assets/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+
+
+    <link href="../assets/css/css.css" rel="stylesheet">
+    <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+</head>
+
+
+<body>
+
+    <section class="main">
+        <div class="bottom-grid">
+            <div class="logo">
+                <h1> <a href="index.html"> 小梁的小破站后台</a></h1>
+            </div>
+        </div>
+        <div class="w3lhny-register">
+            <div class="iconhny">
+               <span class="fa fa-user-plus"></span>
+             </div>
+            <form  method="post" action="/adminlogin" id="dlid" class="register-form">
+
+                    <div class="form">
+                        <div class="form-row">
+                            <span class="fa fa-user"></span>
+                           
+                            <input type="text" id="damin" name="damin" class="form-text" placeholder="告诉我你的账号~" required="">
+                        </div>
+                        <div class="form-row">
+                            <span class="fa fa-lock"></span>
+                            
+                            <input type="password" id="psw" name="psw" class="form-text" placeholder="告诉我你的密码~" required="">
+                        </div>
+                        <div class="form-row button-login">
+                            <button type="submit" class="btn btn-login">登录</button>
+                        </div>
+                    </div>
+
+                </form>
+<script>
+    $('#dlid').on('submit',function (e) {
+        var damin=$('#damin').val();
+        var psw=$('#psw').val();
+        e.preventDefault()//阻止默认事件
+        var formData=$(this).serialize()//获取表单内容
+        console.log(formData)
+        if (damin==""){
+            return alert('账号不能为空')
+        }
+        if (psw==""){
+            return alert('密码不能为空')
+        }
+        $.ajax({
+            url:'/adminlogin',
+            type:'post',
+            data:formData,
+            dataType:'json',
+            success:function (data) {
+                var err_code=data.err_code;
+                if (err_code==0){
+                    window.location.href='/admin'
+                    window.localStorage.setItem('user',damin)
+                    alert('欢迎回来')
+                } else if (err_code==1){
+                    alert('账号不存在，请重新输入！')
+                } else if (err_code==2){
+                    alert('密码错误，请重新输入！')
+                } else {
+                    alert('服务器忙，稍后再试！')
+                }
+            }
+        })
+    })
+
+</script>
+        </div>
+        <!-- //register -->
+        <div class="w3l-copyright">
+            <p>Copyright © 2018 XiaoLiang. All rights reserved.</a>
+            </p>
+        </div>
+    </section>
+
+</body>
+
+</html>

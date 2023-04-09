@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .loading{
+            width: 300px;
+            height: 300px;
+            border:1px solid black;
+            position: relative;
+        }
+        .loading::before,.loading::after{
+            content: '';
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            background: black;
+            border-radius: 50%;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;   /*上下左右都为0，再加上margin:auto; 就是自动居中*/
+            animation: s 1.5s linear infinite;  /*加上s状态，状态开始到结束为1.5s*/
+        }
+        .loading::after{
+            animation-delay: 0.75s;     /*第二个圆出现的时间*/
+        }
+        @keyframes s{
+            0%{             /*初始状态*/
+                width: 0px;
+                height: 0px;
+                opacity: 1; /*透明度*/
+            }
+            100%{           /*结束状态*/
+                width: 100px;
+                height: 100px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="pdfBD"> </canvas>
+<div id="pdf-pagination">
+    <span id="before" onclick="paginationClick(-1)">上一页</span>
+    <span id="current">1</span>
+    <span id="next" onclick="paginationClick(1)">下一页</span>
+</div>
+</body>
+<!-- <script src="https://lib.baomitu.com/pdf.js/2.7.570/pdf.js" type="text/javascript" charset="utf-8"></script> -->
+<script src="../assets/js/pdfjs/build/pdf.js" type="text/javascript" charset="utf-8"></script>
+<div class="loading"></div>
+
+<!--<script type="text/javascript">-->
+    <!--let pdfValue = null;-->
+    <!--let pageContent = {//法二，读取到的pdf信息记录-->
+        <!--currentPage: 0,//当前页-->
+        <!--countPage: 0,//总页数-->
+    <!--}-->
+    <!--window.onload = function() {-->
+        <!--// methodsOne()-->
+        <!--methodsTwo()-->
+    <!--}-->
+
+    <!--function methodsOne() { //法一-->
+        <!--// window.open("./js/pdfJS/web/viewer.html?fileAngularJS权威指南.pdf"  );//文件和viewer.html同路径-->
+        <!--// window.open("http://localhost:8888/pdfJS/web/viewer.html?file=AngularJS权威指南.pdf" );//文件和viewer.html同路径-->
+        <!--window.open("./js/pdfJS/web/viewer.html?file=/pdf/files/AngularJS权威指南.pdf"); //文件和viewer.html 不同路径，注意路径-->
+        <!--document.getElementById("pdf-pagination").display = 'none'; //隐藏分页器-->
+    <!--}-->
+
+    <!--window.onload=function methodsTwo() { //法二-->
+        <!--var loadingTask = pdfjsLib.getDocument('../assets/images/essay/docx/api.pdf');-->
+        <!--loadingTask.promise.then(function(pdf) {-->
+            <!--console.log(pdf)-->
+            <!--pdfValue = pdf;-->
+            <!--pageContent.countPage = pdf.numPages;-->
+            <!--changePage(pdf, 1)-->
+        <!--});-->
+        <!--document.getElementById("pdf-pagination").display = 'block'; //显示分页器-->
+    <!--}-->
+
+    <!--//翻页 type：1 下一页；-1：上一页-->
+    <!--function paginationClick(type) {-->
+        <!--if (type == 1) {-->
+            <!--//下一页-->
+            <!--pageContent.currentPage == pageContent.countPage ? "" : pageContent.currentPage += 1-->
+        <!--} else {-->
+            <!--//上一页-->
+            <!--pageContent.currentPage == 1 ? "" : pageContent.currentPage -= 1-->
+        <!--}-->
+        <!--document.getElementById("current").innerHTML = pageContent.currentPage-->
+        <!--changePage(pdfValue, pageContent.currentPage)-->
+    <!--}-->
+    <!--//通过页码，渲染当前页currentPage信息：pdf：读取的总的pdf信息，pageNum：需要获取的页数-->
+    <!--function changePage(pdf, pageNum) {-->
+        <!--if (pdf == null) return;-->
+        <!--pdf.getPage(pageNum).then(function(page) {-->
+            <!--// you can now use *page* here-->
+            <!--var scale = 1.5;//放大倍数-->
+            <!--var viewport = page.getViewport({-->
+                <!--scale: scale,-->
+            <!--});-->
+            <!--// Support HiDPI-screens.-->
+            <!--var outputScale = window.devicePixelRatio || 1;-->
+
+            <!--var canvas = document.getElementById('pdfBD');-->
+            <!--var context = canvas.getContext('2d');-->
+
+            <!--canvas.width = Math.floor(viewport.width * outputScale);-->
+            <!--canvas.height = Math.floor(viewport.height * outputScale);-->
+            <!--canvas.style.width = Math.floor(viewport.width) + "px";-->
+            <!--canvas.style.height = Math.floor(viewport.height) + "px";-->
+
+            <!--var transform = outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] :-->
+                <!--null;-->
+            <!--var renderContext = {-->
+                <!--canvasContext: context,-->
+                <!--transform: transform,-->
+                <!--viewport: viewport-->
+            <!--};-->
+            <!--page.render(renderContext);-->
+        <!--});-->
+    <!--}-->
+<!--</script>-->
+
+</html>
+

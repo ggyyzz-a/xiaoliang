@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>小梁的小破站</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="../assets/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link id="theme-style" rel="stylesheet" href="../assets/css/theme-1.css">
+
+    <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+</head> 
+
+<body style="background-color: #e4e4e4">
+
+<header class="header text-center">
+    <h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="index.html">小梁的小破站</a></h1>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" >
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navigation" class="collapse navbar-collapse flex-column" >
+            <div class="profile-section pt-3 pt-lg-0">
+                <img class="profile-image mb-3 rounded-circle mx-auto" src="../assets/images/profile.png" alt="image" >
+
+                <div class="bio mb-3">
+                    <P>个人开发的一个小网站，主要收集一些有趣的网站，方便自己使用，也方便大家。</P>
+                    <P>有觉得有趣的网站可以分享给我~(⁄ ⁄•⁄ω⁄•⁄ ⁄)</P>
+                </div>
+                <hr>
+                <ul class="social-list list-inline py-3 mx-auto">
+                    {{if user}}
+                    <li class="list-inline-item"><a  href="#">昵称：<%= name %></a></li>
+                    <li class="list-inline-item"><a id="yhlogout" href="/yhlogout">退出登录</a></li>
+                    {{else}}
+                    <li class="list-inline-item"><a id="dl" href="#">登录</a></li>
+                    <li class="list-inline-item"><a id="zc" href="#">注册</a></li>
+                    <li class="list-inline-item"><a href="/adminlog" target="_blank">后台登录</a></li><br>
+                    {{/if}}
+                    <div class="bd" style="display: none" id="aa" >
+                        <form  method="post" action="/yhlogin" id="dlid">
+                            <hr>
+                            <div class="sign">
+                                <label for="yonghuming">用户名：</label>
+                                <input type="email" id="yonghuming" name="yonghuming" class="form-control me-md-1" placeholder="电子邮箱~">
+                            </div>
+                            <div class="sign" >
+                                <label for="mima">密码：</label>
+                                <input type="password" id="mima" name="mima" class="form-control me-md-1" placeholder="密码~">
+                            </div>
+                            <div class="sign" >
+                                <button type="submit" class="btn btn-primary ">登  录</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="bd" style="display: none" id="bb">
+                        <form  method="post" action="/yhregist" id="zcid">
+                            <hr>
+                            <div class="sign">
+                                <label for="zc_nichen">用户名：</label>
+                                <input type="text" id="zc_nichen" name="nichen" class="form-control me-md-1" placeholder="用户名~">
+                            </div>
+                            <div class="sign" >
+                                <label for="zc_yonghuming">邮箱：</label>
+                                <input type="text" id="zc_yonghuming" name="yonghuming" class="form-control me-md-1" placeholder="邮箱~">
+                            </div>
+                            <div class="sign" >
+                                <label for="zc_mima">密码：</label>
+                                <input type="password" id="zc_mima" name="mima" class="form-control me-md-1" placeholder="密码~">
+                            </div>
+                            <div class="sign" >
+                                <button type="submit" class="btn btn-primary ">注册</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </ul><!--//social-list-->
+                <hr>
+            </div><!--//profile-section-->
+            <script type="text/javascript">
+                //登录提交
+                $('#dlid').on('submit',function (e) {
+                    var yonghuming=$('#yonghuming').val();
+                    var mima=$('#mima').val();
+                    e.preventDefault()//阻止默认事件
+                    var formData=$(this).serialize()//获取表单内容
+                    // console.log(formData)
+                    if (yonghuming==""){
+                        return alert('账号不能为空')
+                    }
+                    if (mima==""){
+                        return alert('密码不能为空')
+                    }
+                    $.ajax({
+                        url:'/yhlogin',
+                        type:'post',
+                        data:formData,
+                        dataType:'json',
+                        success:function (data) {
+                            var err_code=data.err_code;
+                            if (err_code==0){
+                                window.location.href='/'
+                                window.localStorage.setItem('user',yonghuming)
+                                alert('登录成功！')
+                            } else if (err_code==1){
+                                alert('账号不存在，请重新输入！')
+                            } else if (err_code==2){
+                                alert('密码错误，请重新输入！')
+                            } else {
+                                alert('服务器忙，稍后再试！')
+                            }
+                        }
+                    })
+                })
+                //注册提交
+                $('#zcid').on('submit',function (e) {
+                    var zc_nichen=$('#zc_nichen').val();
+                    var zc_yonghuming=$('#zc_yonghuming').val();
+                    var zc_mima=$('#zc_mima').val();
+                    e.preventDefault()//阻止默认事件
+                    var formData=$(this).serialize()//获取表单内容
+                    // console.log(formData)
+                    if (zc_nichen==""){
+                        return alert('用户名不能为空')
+                    }
+                    if (zc_yonghuming==""){
+                        return alert('邮箱不能为空')
+                    }
+                    if (zc_mima==""){
+                        return alert('密码不能为空')
+                    }
+                    $.ajax({
+                        url:'/yhregist',
+                        type:'post',
+                        data:formData,
+                        dataType:'json',
+                        success:function (data) {
+                            var err_code=data.err_code;
+                            if (err_code==0){
+                                window.location.href='/'
+                                // window.localStorage.setItem('user',yonghuming)
+                                alert('注册成功！')
+                            } else if (err_code==1){
+                                alert('昵称已经存在，请重新输入！')
+                            } else if (err_code==2){
+                                alert('账号已经存在，请误重复注册！')
+                            } else {
+                                alert('服务器忙，稍后再试！')
+                            }
+                        }
+                    })
+                })
+                //退出登录
+                $("#yhlogout").click(function () {
+                    alert("退出登录！")
+                    localStorage.removeItem('user')
+                    sessionStorage.removeItem('ad')
+                })
+
+                //登录注册显示隐藏
+                $("#dl").click(function () {
+                    if (document.getElementById("aa").style.display=="none"){
+                        $("#aa").show();
+                        $("#bb").hide();
+                    }else {
+                        $("#aa").hide();
+                    }
+                });
+                $("#zc").click(function () {
+                    if (document.getElementById("bb").style.display=="none"){
+                        $("#bb").show();
+                        $("#aa").hide();
+                    }else {
+                        $("#bb").hide();
+                    }
+                });
+            </script>
+            <ul class="navbar-nav flex-column text-start">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">
+                        <i class="fa fa-home fa-fw me-2"></i>精选福利 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tool">
+                        <i class="fa fa-bookmark fa-fw me-2"></i>常用工具</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="###">
+                        <i class="fa fa-bookmark fa-fw me-2"></i>杂七杂八</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/author">
+                        <i class="fa fa-user fa-fw me-2"></i>关于作者</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+
+    <div class="main-wrapper">
+	    
+	    <section class="cta-section theme-bg-light py-4 section">
+		    <div class="container text-center single-col-max-width">
+			    <h2 class="heading">常用工具合集</h2>
+			    <div class="intro">欢迎来到我的小破站，喜欢就收藏吧！</div>
+			    <div class="single-form-max-width pt-3 mx-auto">
+				    <form class="signup-form row g-2 g-lg-2 align-items-center">
+	                    <div class="col-12 col-md-9">
+	                        <!--<label class="sr-only" for="semail">Your email</label>-->
+	                        <input type="text" id="semail" name="semail1" class="form-control me-md-1 semail" placeholder="你想找点什么呢？">
+	                    </div>
+	                    <div class="col-12 col-md-2">
+	                        <button type="submit" class="btn btn-primary">搜索</button>
+	                    </div>
+	                </form><!--//signup-form-->
+			    </div><!--//single-form-max-width-->
+		    </div><!--//container-->
+	    </section>
+	    
+	    
+	    <section class="blog-list px-3 py-4 p-md-5 section">
+		    <div class="container single-col-max-width">
+                <hr>
+                <% essay.forEach(function(value){%>
+			    <div class="item mb-5">
+				    <div class="row g-3 g-xl-0">
+					    <div class="col-2 col-xl-3">
+					        <img class="img-fluid1 post-thumb" src="../assets/images/essay/<%=value.fm_img%>" alt="image">
+					    </div>
+					    <div class="col">
+						    <h3 class="title mb-1"><a class="text-link " target="_blank" href="/details?wid=<%=value.wid%>"><%=value.title%></a></h3>
+						    <div class="meta mb-1">
+                                <span class="name"><i class="fa fa-user">&nbsp</i><%=value.author%></span>
+                                <span class="date"><i class="fa fa-clock-o">&nbsp</i><%=value.time%></span>
+                                <!--<span class="comment"><i class="fa fa-comment-o">&nbsp</i>8 评论</span>-->
+                            </div>
+						    <div class="intro"><p class="cotent_length"><%=value.jianjie%></p></div>
+						    <a class="text-link" target="_blank" href="/details?wid=<%=value.wid%>">阅读更多...</a>
+					    </div><!--//col-->
+				    </div><!--//row-->
+			    </div>
+                <%})%>
+			    <nav class="blog-nav nav nav-justified my-5">
+				  <a class="nav-link-next nav-item nav-link rounded" href="#">下一页<i class="arrow-next fa fa-arrow-right"></i></a>
+				</nav>
+				
+		    </div>
+	    </section>
+
+        <footer class="footer text-center py-2 theme-bg-dark">
+            <p class="copyright">Copyright © 2018 XiaoLiang. All rights reserved. </p>
+        </footer>
+        <div class="backTop">
+            <a class="top fanhui fa fa-angle-up"></a>
+            <a target="_blank" onclick="qq()" class="top fa fa-qq"></a>
+            <a class="top fa fa-weixin"></a>
+        </div>
+    </div>
+
+
+<script src="../assets/js/popper.min.js"></script>
+<script src="../assets/js/bootstrap/js/bootstrap.min.js"></script>
+<script>
+
+
+
+    var qq_chat = true;
+    function qq() {
+        if (qq_chat) {
+            popwin = window.location.href = 'tencent://message/?uin=1597917794&Site=小梁&Menu=yes'
+        }
+    };
+
+    $(".cotent_length").each(function(i) {
+        //获取a当前对象的文本,如果长度大于;
+        if($(this).text().length > 100) {
+            //给a设置title属性,并且设置a的完整值.给title属性.
+            $(this).attr("title",$(this).text());
+            //获取a的值,进行截取。赋值给text变量保存.
+            var text = $(this).text().substring(0,100)+"...";
+            //重新为a赋值;
+            $(this).text(text);
+        }
+    });
+
+    $(function() {
+        $(".backTop").hide();//默认隐藏按钮
+        $(window).scroll(function() {
+            if ($(this).scrollTop() >= 20) {
+                $(".backTop").fadeIn(500);
+            } else {
+                $(".backTop").fadeOut(500);
+            }
+        });
+        $(".fanhui").click(function() {
+            $("body,html").animate({
+                scrollTop: 0
+            }, 500);
+        })
+    });
+</script>
+
+    
+
+</body>
+</html> 
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>小梁的小破站</title>
+    
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+    <style>
+        body,html{height:100%;width:100%;overflow-x:hidden}
+        body{margin:0;background:#FA3663}
+        .loader{height:100%;width:100%}
+        .loader .l_main{position:absolute;top:50%;left:50%;width:172px;height:128px;margin:0;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+        @media (max-width:550px){.loader{-webkit-transform:scale(0.75);transform:scale(0.75)}}
+        @media (max-width:440px){.loader{-webkit-transform:scale(0.5);transform:scale(0.5)}}
+        .l_square{position:relative}
+        .l_square:nth-child(1){margin-left:0px}
+        .l_square:nth-child(2){margin-left:44px}
+        .l_square:nth-child(3){margin-left:88px}
+        .l_square:nth-child(4){margin-left:132px}
+        .l_square span{position:absolute;top:0px;left:20px;height:36px;width:36px;border-radius:2px;background-color:#FFFFFF}
+        .l_square span:nth-child(1){top:0px}
+        .l_square span:nth-child(2){top:44px}
+        .l_square span:nth-child(3){top:88px}
+        .l_square:nth-child(1) span{-webkit-animation:animsquare1 2s infinite ease-in;animation:animsquare1 2s infinite ease-in}
+        .l_square:nth-child(2) span{-webkit-animation:animsquare2 2s infinite ease-in;animation:animsquare2 2s infinite ease-in}
+        .l_square:nth-child(3) span{-webkit-animation:animsquare3 2s infinite ease-in;animation:animsquare3 2s infinite ease-in}
+        .l_square:nth-child(4) span{-webkit-animation:animsquare4 2s infinite ease-in;animation:animsquare4 2s infinite ease-in}
+        .l_square span:nth-child(1){-webkit-animation-delay:0.00s;animation-delay:0.00s}
+        .l_square span:nth-child(2){-webkit-animation-delay:0.15s;animation-delay:0.15s}
+        .l_square span:nth-child(3){-webkit-animation-delay:0.30s;animation-delay:0.30s}
+        @-webkit-keyframes animsquare1{0%,5%,95%,100%{-webkit-transform:translate(0px,0px) rotate(0deg);transform:translate(0px,0px) rotate(0deg)}30%,70%{-webkit-transform:translate(-40px,0px) rotate(-90deg);transform:translate(-40px,0px) rotate(-90deg)}}
+        @keyframes animsquare1{0%,5%,95%,100%{-webkit-transform:translate(0px,0px) rotate(0deg);transform:translate(0px,0px) rotate(0deg)}30%,70%{-webkit-transform:translate(-40px,0px) rotate(-90deg);transform:translate(-40px,0px) rotate(-90deg)}}
+        @-webkit-keyframes animsquare2{0%,10%,90%,100%{-webkit-transform:translate(0px,0px) rotate(0deg);transform:translate(0px,0px) rotate(0deg)}35%,65%{-webkit-transform:translate(-40px,0px) rotate(-90deg);transform:translate(-40px,0px) rotate(-90deg)}}
+        @keyframes animsquare2{0%,10%,90%,100%{-webkit-transform:translate(0px,0px) rotate(0deg);transform:translate(0px,0px) rotate(0deg)}35%,65%{-webkit-transform:translate(-40px,0px) rotate(-90deg);transform:translate(-40px,0px) rotate(-90deg)}}
+        @-webkit-keyframes animsquare3{0%,15%,85%,100%{-webkit-transform:translate(0px,0px) rotate(0deg);transform:translate(0px,0px) rotate(0deg)}40%,60%{-webkit-transform:translate(-40px,0px) rotate(-90deg);transform:translate(-40px,0px) rotate(-90deg)}}
+        @keyframes animsquare3{0%,15%,85%,100%{-webkit-transform:translate(0px,0px) rotate(0deg);transform:translate(0px,0px) rotate(0deg)}40%,60%{-webkit-transform:translate(-40px,0px) rotate(-90deg);transform:translate(-40px,0px) rotate(-90deg)}}
+        @-webkit-keyframes animsquare4{0%,20%,80%,100%{-webkit-transform:translate(0px,0px) rotate(0deg);transform:translate(0px,0px) rotate(0deg)}45%,55%{-webkit-transform:translate(-40px,0px) rotate(-90deg);transform:translate(-40px,0px) rotate(-90deg)}}
+        @keyframes animsquare4{0%,20%,80%,100%{-webkit-transform:translate(0px,0px) rotate(0deg);transform:translate(0px,0px) rotate(0deg)}45%,55%{-webkit-transform:translate(-40px,0px) rotate(-90deg);transform:translate(-40px,0px) rotate(-90deg)}}
+    </style>
+
+</head> 
+
+<body >
+<div class="loader">
+    <div class="l_main">
+        <div class="l_square"><span></span><span></span><span></span></div>
+        <div class="l_square"><span></span><span></span><span></span></div>
+        <div class="l_square"><span></span><span></span><span></span></div>
+        <div class="l_square"><span></span><span></span><span></span></div>
+    </div>
+</div>
+<div style="text-align:center;margin:-150px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+</div>
+<a href="" style="display:none;"></a>
+
+<p style="display: none" class="iframe">
+    <%=details%>
+</p>
+
+<script>
+
+    window.setTimeout(function (){
+        methodsOne()
+    },2000)
+    function methodsOne() { //法一
+        // window.open("./js/pdfJS/web/viewer.html?fileAngularJS权威指南.pdf"  );//文件和viewer.html同路径
+        // window.open("http://localhost:8888/pdfJS/web/viewer.html?file=AngularJS权威指南.pdf" );//文件和viewer.html同路径
+        // window.open("./js/pdfJS/web/viewer.html?file=/pdf/files/AngularJS权威指南.pdf"); //文件和viewer.html 不同路径，注意路径
+        var a=$('.iframe').text()
+        let fileUrl = encodeURIComponent(a) //将路径转码
+        window.open("../assets/js/pdfjs/web/viewer.html?file=" + fileUrl,"_self");//文件和viewer.html同路径
+    }
+</script>
+
+</body>
+</html> 
+
